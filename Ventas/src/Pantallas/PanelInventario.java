@@ -5,15 +5,18 @@
  */
 package Pantallas;
 
+import Controladores.Modelador;
+import Utilidades.Modelos;
+import Utilidades.Querys;
 import java.awt.Color;
 import javax.swing.JTextField;
-
+import java.sql.Connection;
 /**
  *
  * @author PapuXDXDXD
  */
 public class PanelInventario extends javax.swing.JPanel {
-    
+    Connection connection = null;
     private final String PRE_CODIGO = "PROD-0000";
     private final String PRE_NOMBRE = "PRODUCTO";
     private final String PRE_TIENDA = "TIENDA";
@@ -21,6 +24,11 @@ public class PanelInventario extends javax.swing.JPanel {
     
     public PanelInventario() {
         initComponents();
+    }
+    
+    public void getProductos(){
+        Modelador modelador = new Modelador(connection);
+        modelador.obtenerDatos(TablaInventario, Querys.SELECT_PRODUCTOS, Modelos.MODELO_PRODUCTOS);
     }
     //Se activa al dar click en un textField, cambia el color de fuente para 
     //que sea mas legible
@@ -40,6 +48,9 @@ public class PanelInventario extends javax.swing.JPanel {
         } 
     }
     
+    public void setConnection(Connection connection){
+        this.connection = connection;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

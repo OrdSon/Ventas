@@ -7,21 +7,24 @@ package Vistas;
 
 import Pantallas.InicioAdmin;
 import Pantallas.Login;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
+import java.sql.Connection;
 /**
  *
  * @author OrdSon
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    Connection connection = null;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
     }
+    public MainFrame(Connection connection) {
+        initComponents();
+        this.connection = connection;
+    }
+    
     
     public void showLogin(){
         Login login = new Login();
@@ -30,11 +33,16 @@ public class MainFrame extends javax.swing.JFrame {
         PanelBase.updateUI();
     }
     public void showInicio(){
-        InicioAdmin inicio = new InicioAdmin();
+        InicioAdmin inicio = new InicioAdmin(connection);
         inicio.iniciar();
         inicio.setVisible(true);
         PanelBase.add(inicio);
         PanelBase.updateUI();
+    }
+    
+    public void setConnection(Connection connection){
+        this.connection = connection;
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.

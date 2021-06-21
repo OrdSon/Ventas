@@ -6,16 +6,16 @@
 package Pantallas;
 
 import Utilidades.Herramientas;
-import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import java.sql.Connection;
 
 /**
  *
  * @author OrdSon
  */
 public class InicioAdmin extends javax.swing.JPanel {
-
+    Connection connection = null;
     Herramientas herramientas = new Herramientas();
     PanelInventario inventario = new PanelInventario();
     PanelAdministracion administracion = new PanelAdministracion();
@@ -29,6 +29,13 @@ public class InicioAdmin extends javax.swing.JPanel {
 
     public InicioAdmin() {
         initComponents();
+    }
+    
+    public InicioAdmin(Connection connection){
+        initComponents();
+        this.connection = connection;
+        inventario.setConnection(connection);
+        inventario.getProductos();
     }
 
     @SuppressWarnings("unchecked")
@@ -227,6 +234,10 @@ public class InicioAdmin extends javax.swing.JPanel {
             herramientas.deshabilitarPanel(paneles.get(i));
         }
         PanelBase.updateUI();
+    }
+    
+    public void setConnection(Connection connection){
+        this.connection = connection;
     }
 
     private void BtnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInventarioActionPerformed

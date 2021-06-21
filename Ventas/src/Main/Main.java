@@ -5,6 +5,7 @@
  */
 package Main;
 
+import Utilidades.Conexion;
 import Vistas.MainFrame;
 
 /**
@@ -13,7 +14,10 @@ import Vistas.MainFrame;
  */
 public class Main {
     public static void main(String[] args) {
-        MainFrame cuadro = new MainFrame();
+        Conexion conexion = new Conexion();
+        conexion.conectar();
+
+        MainFrame cuadro = new MainFrame(conexion.getConnection());
         cuadro.showInicio();
         cuadro.setVisible(true);
         MainFrame otro = new MainFrame();
