@@ -5,23 +5,31 @@
  */
 package Pantallas;
 
-import Vistas.FrameNuevaVenta;
-import java.awt.Color;
-import javax.swing.JTextField;
-
+import Controladores.Modelador;
+import Utilidades.Modelos;
+import Utilidades.Querys;
+import java.sql.Connection;
 /**
  *
  * @author OrdSon
  */
 public class PanelProveedores extends javax.swing.JPanel {
     
-
+    Connection connection = null;
+    Modelador modelador = new Modelador();
     
     public PanelProveedores() {
         initComponents();
     }
 
+    public void obtenerProveedores(){
+        modelador.obtenerDatos(TablaProveedores, Querys.SELECT_PROVEEDORES, Modelos.MODELO_PROVEEDORES);
+    }
     
+    public void setConnection(Connection connection){
+        this.connection = connection;
+        modelador.setConnection(connection);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -46,7 +54,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         PanelBaseTabla = new javax.swing.JPanel();
         jScrollDeTabla = new javax.swing.JScrollPane();
-        TablaInventario = new javax.swing.JTable();
+        TablaProveedores = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
 
@@ -284,8 +292,8 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         jScrollDeTabla.setBackground(new java.awt.Color(255, 255, 255));
 
-        TablaInventario.setFont(new java.awt.Font("Tw Cen MT", 0, 16)); // NOI18N
-        TablaInventario.setModel(new javax.swing.table.DefaultTableModel(
+        TablaProveedores.setFont(new java.awt.Font("Tw Cen MT", 0, 16)); // NOI18N
+        TablaProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -296,8 +304,8 @@ public class PanelProveedores extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        TablaInventario.setGridColor(new java.awt.Color(51, 54, 131));
-        jScrollDeTabla.setViewportView(TablaInventario);
+        TablaProveedores.setGridColor(new java.awt.Color(51, 54, 131));
+        jScrollDeTabla.setViewportView(TablaProveedores);
 
         PanelBaseTabla.add(jScrollDeTabla, java.awt.BorderLayout.CENTER);
 
@@ -360,7 +368,7 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JPanel PanelBuscarCodigo;
     private javax.swing.JPanel PanelBuscarPorTienda1;
     private javax.swing.JPanel PanelOpcionesBusqueda;
-    private javax.swing.JTable TablaInventario;
+    private javax.swing.JTable TablaProveedores;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

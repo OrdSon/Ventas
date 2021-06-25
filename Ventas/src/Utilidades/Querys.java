@@ -17,5 +17,6 @@ public class Querys {
                                                 "compra.Usuario_id_usuario  FROM compra " +
                                                 "INNER JOIN Proveedor ON Proveedor.id_nit = compra.Proveedor_id_nit;";
     public static final String SELECT_CLIENTES = "SELECT NIT, nombre, telefono, direccion FROM Cliente";
+    public static final String SELECT_PROVEEDORES = "SELECT id_nit, nombre, direccion, telefono, email FROM Proveedor";
     
 }

@@ -17,4 +17,5 @@ public class Modelos {
     {"ID","FECHA","CODIGO/NIT PROVEEDOR","PROVEEDOR","TIENDA","TOTAL","USUARIO RESPONSABLE"};
     
     public static final String[] MODELO_CLIENTES = {"NIT","NOMBRE","TELEFONO","DIRECCION"};
+    public static final String[] MODELO_PROVEEDORES = {"ID/NIT","NOMBRE","DIRECCION","TELEFONO","EMAIL"};
 }
