@@ -35,7 +35,11 @@ public class InicioAdmin extends javax.swing.JPanel {
         initComponents();
         this.connection = connection;
         inventario.setConnection(connection);
+        compras.setConnection(connection);
+        clientes.setConnection(connection);
         inventario.getProductos();
+        compras.obtenerCompras();
+        clientes.obtenerClientes();
     }
 
     @SuppressWarnings("unchecked")

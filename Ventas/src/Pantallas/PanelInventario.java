@@ -11,12 +11,14 @@ import Utilidades.Querys;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.sql.Connection;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 /**
  *
  * @author PapuXDXDXD
  */
 public class PanelInventario extends javax.swing.JPanel {
     Connection connection = null;
+    Modelador modelador = new Modelador();
     private final String PRE_CODIGO = "PROD-0000";
     private final String PRE_NOMBRE = "PRODUCTO";
     private final String PRE_TIENDA = "TIENDA";
@@ -24,10 +26,11 @@ public class PanelInventario extends javax.swing.JPanel {
     
     public PanelInventario() {
         initComponents();
+        AutoCompleteDecorator.decorate(cbBuscarNombre);
+        
     }
     
     public void getProductos(){
-        Modelador modelador = new Modelador(connection);
         modelador.obtenerDatos(TablaInventario, Querys.SELECT_PRODUCTOS, Modelos.MODELO_PRODUCTOS);
     }
     //Se activa al dar click en un textField, cambia el color de fuente para 
@@ -50,6 +53,8 @@ public class PanelInventario extends javax.swing.JPanel {
     
     public void setConnection(Connection connection){
         this.connection = connection;
+        modelador.setConnection(connection);
+        
     }
 
     @SuppressWarnings("unchecked")

@@ -12,4 +12,9 @@ package Utilidades;
 public class Modelos {
     public static final String[] MODELO_PRODUCTOS = 
     {"CODIGO", "NOMBRE", "PRESENTACION", "PRECIO DE COMPRA", "PRECIO DE VENTA"};
+    
+    public static final String[] MODELO_COMPRAS = 
+    {"ID","FECHA","CODIGO/NIT PROVEEDOR","PROVEEDOR","TIENDA","TOTAL","USUARIO RESPONSABLE"};
+    
+    public static final String[] MODELO_CLIENTES = {"NIT","NOMBRE","TELEFONO","DIRECCION"};
 }

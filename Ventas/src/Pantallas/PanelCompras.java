@@ -5,17 +5,22 @@
  */
 package Pantallas;
 
+import Controladores.Modelador;
+import Utilidades.Modelos;
+import Utilidades.Querys;
 import Vistas.FrameNuevaCompra;
 import Vistas.FrameNuevaVenta;
 import java.awt.Color;
 import javax.swing.JTextField;
-
+import java.sql.Connection;
 /**
  *
  * @author OrdSon
  */
 public class PanelCompras extends javax.swing.JPanel {
     
+    Connection connection = null;
+    Modelador modelador = new Modelador();
     private final String PRE_CODIGO = "PROD-0000";
     private final String PRE_NOMBRE = "PRODUCTO";
     private final String PRE_TIENDA = "TIENDA";
@@ -47,6 +52,14 @@ public class PanelCompras extends javax.swing.JPanel {
         nuevaCompra.setVisible(true);
     }
     
+    public void obtenerCompras(){
+        modelador.obtenerDatos(TablaInventario, Querys.SELECT_COMPRAS, Modelos.MODELO_COMPRAS);
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+        modelador.setConnection(connection);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

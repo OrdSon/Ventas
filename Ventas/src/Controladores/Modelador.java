@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Connection;
 import java.sql.SQLException;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author ordson201931185
@@ -22,6 +24,10 @@ public class Modelador {
     
     public Modelador(Connection connection){
         this.connection = connection;
+    }
+    
+    public Modelador(){
+        
     }
     
     public void obtenerDatos(JTable tabla, String query, String[] modelPreset){
@@ -39,6 +45,7 @@ public class Modelador {
             int columnas = rsMd.getColumnCount();
             
             setModel(modelPreset, modelo);
+            setSorter(modelo, tabla);
             
             while (rs.next()) {                
                 
@@ -60,5 +67,14 @@ public class Modelador {
         for (int i = 0; i < modelPreset.length; i++) {
             modelo.addColumn(modelPreset[i]);
         }
+    }
+    
+    public void setConnection(Connection connection){
+        this.connection = connection;
+    }
+    
+    public void setSorter(DefaultTableModel modelo, JTable tabla){
+        TableRowSorter<TableModel> elQueOrdena = new TableRowSorter<>(modelo);
+        tabla.setRowSorter(elQueOrdena);
     }
 }
